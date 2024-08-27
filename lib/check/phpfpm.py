@@ -17,12 +17,14 @@ async def check_phpfpm(
             'Check did not run; '
             'statusUrl is not provided, invalid or empty')
         raise IgnoreCheckException
-    # TODO allow_redirects, verify_ssl config
 
-    # TODO make request.params nicer
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, params={'json': 'True'}) as resp:
+            async with session.get(
+                url,
+                params={'json': '1'},
+                ssl=False
+            ) as resp:
                 resp.raise_for_status()
                 data = await resp.json()
     except Exception as e:
