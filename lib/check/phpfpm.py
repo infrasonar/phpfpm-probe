@@ -11,11 +11,11 @@ async def check_phpfpm(
         check_config: dict):
 
     try:
-        url = check_config['status_url']
+        url = check_config['statusUrl']
     except Exception:
         logging.warning(
             'Check did not run; '
-            'status_url is not provided, invalid or empty')
+            'statusUrl is not provided, invalid or empty')
         raise IgnoreCheckException
     # TODO allow_redirects, verify_ssl config
 

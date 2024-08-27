@@ -37,7 +37,7 @@ asset:
   name: "foo.local"
   check: "phpfpm"
   config:
-    status_url:
+    statusUrl:
       - "https://foo/some_status"
 ```
 
