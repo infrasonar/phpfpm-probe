@@ -3,6 +3,7 @@ import logging
 from libprobe.asset import Asset
 from libprobe.exceptions import CheckException
 from libprobe.exceptions import IgnoreCheckException
+from ..connector import get_connector
 
 
 async def check_phpfpm(
@@ -19,7 +20,7 @@ async def check_phpfpm(
         raise IgnoreCheckException
 
     try:
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(connector=get_connector()) as session:
             async with session.get(
                 url,
                 params={'json': '1'},
